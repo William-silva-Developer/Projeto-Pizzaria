@@ -1,4 +1,3 @@
-import { Response, Request, response } from "express";
 import prismaClient from "../../../Prisma";
 import { hash } from "bcryptjs";
 
