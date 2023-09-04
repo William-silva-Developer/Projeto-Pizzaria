@@ -5,7 +5,10 @@ class DatailsUserController {
   async handle(req: Request, res: Response) {
     const datailsUserService = new DatailsUserService();
 
-    const userDatails = await datailsUserService.excute();
+    const user_id = req.user_id;
+    console.log("ID DO USUARIO:", user_id);
+
+    const userDatails = await datailsUserService.excute(user_id);
     return res.json(userDatails);
   }
 }

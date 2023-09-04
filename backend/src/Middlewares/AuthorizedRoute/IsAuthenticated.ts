@@ -20,7 +20,8 @@ export function isAuthenticated(
 
   try {
     const { sub } = verify(token, process.env.JWT_SECRET_KEY) as Payload;
-    console.log("first: ", sub);
+    //RECUPERANDO O ID DO USUÁRIO NO TOKEN E COLOCANDO NA VARIÁVEL "user_id" NO REQ.
+    req.user_id = sub;
     return next();
   } catch (error) {
     return res.status(401).json({ message: "Not Authentication" }).end;
