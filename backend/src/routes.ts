@@ -11,6 +11,8 @@ import { ProductController } from "./Controllers/Product/ProductController";
 
 import uploadConfig from "./Config/Multer";
 import { ListByIdCategoryProductController } from "./Controllers/Product/ListByIdCategoryProductController";
+import { CreateOrderController } from "./Controllers/Order/CreateOrderController";
+import { DeleteOrderController } from "./Controllers/Order/DeleteOrderController";
 //------------------------------------------------------------------------------
 
 const router = Router();
@@ -32,6 +34,7 @@ router.post("/category", isAuthenticated, new CategoryController().handle);
 //LISTAR TODAS AS CATEGORIAS
 router.get("/category", isAuthenticated, new ListCategoryController().handle);
 
+//LISTAR TODOS OS PRODUTOS POR CATEGORIA
 router.get(
   "/category/products",
   isAuthenticated,
@@ -39,12 +42,19 @@ router.get(
 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-//LISTAR TODAS AS CATEGORIAS
+//CADASTRAR UM PRODUTO
 router.post(
   "/product",
   isAuthenticated,
   uploadImage.single("file"),
   new ProductController().handle
 );
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ABRIR UMA ORDER
+router.post("/order", isAuthenticated, new CreateOrderController().handle);
+
+//DELETAR UMA ORDER - PERDIDO
+router.delete("/order", isAuthenticated, new DeleteOrderController().handle);
 
 export { router };
