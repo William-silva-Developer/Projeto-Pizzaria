@@ -10,7 +10,7 @@ class DeleteOrderController {
     const deleteOrder = await deleteOrderService.execute({
       order_id,
     });
-    return res.json(deleteOrder);
+    return res.status(200).json(deleteOrder);
   }
 }
 

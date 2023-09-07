@@ -13,6 +13,9 @@ import uploadConfig from "./Config/Multer";
 import { ListByIdCategoryProductController } from "./Controllers/Product/ListByIdCategoryProductController";
 import { CreateOrderController } from "./Controllers/Order/CreateOrderController";
 import { DeleteOrderController } from "./Controllers/Order/DeleteOrderController";
+import { AddItemOrderController } from "./Controllers/Order/AddItemOrderController";
+import { RemoveItemController } from "./Controllers/Order/RemoveItemController";
+import { SendOrderController } from "./Controllers/Order/SendOrderController";
 //------------------------------------------------------------------------------
 
 const router = Router();
@@ -56,5 +59,22 @@ router.post("/order", isAuthenticated, new CreateOrderController().handle);
 
 //DELETAR UMA ORDER - PERDIDO
 router.delete("/order", isAuthenticated, new DeleteOrderController().handle);
+
+//ADICIONANDO ITEM A ORDER - PERDIDO
+router.post("/order/add", isAuthenticated, new AddItemOrderController().handle);
+
+//REMOVER ITEM
+router.delete(
+  "/order/removeItem",
+  isAuthenticated,
+  new RemoveItemController().handle
+);
+
+//UPDATE NO DRAFT- TIRAR PERDIDO DE RASCUNHO
+router.put(
+  "/order/sendOrder",
+  isAuthenticated,
+  new SendOrderController().handle
+);
 
 export { router };
