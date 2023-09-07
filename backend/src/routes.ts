@@ -18,6 +18,7 @@ import { RemoveItemController } from "./Controllers/Order/RemoveItemController";
 import { SendOrderController } from "./Controllers/Order/SendOrderController";
 import { ListOrderController } from "./Controllers/Order/ListOrderController";
 import { DetailsOrderController } from "./Controllers/Order/DetailsOrderController";
+import { FinishOrderController } from "./Controllers/Order/FinishOrderController";
 //------------------------------------------------------------------------------
 
 const router = Router();
@@ -87,6 +88,13 @@ router.get(
   "/order/details",
   isAuthenticated,
   new DetailsOrderController().handle
+);
+
+//FINALIZADO ORDERS - PERDIDO
+router.put(
+  "/order/finish",
+  isAuthenticated,
+  new FinishOrderController().handle
 );
 
 export { router };
